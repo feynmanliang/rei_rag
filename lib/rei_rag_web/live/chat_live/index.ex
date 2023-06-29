@@ -131,11 +131,14 @@ defmodule ReiRagWeb.ChatLive.Index do
   defp chat_completion(messages) do
     Req.post!(
       System.get_env("OPENAI_API_URL"),
-      headers: [Authorization: ~s'Bearer #{System.get_env("OPENAI_API_KEY")}'],
+      headers: [
+        Authorization: ~s'Bearer #{System.get_env("OPENAI_API_KEY")}'
+      ],
       json: %{
         model: "gpt-3.5-turbo",
         messages: messages
-      }
+      },
+      compressed: false
     ).body["choices"]
     |> List.first()
     |> get_in(["message", "content"])
