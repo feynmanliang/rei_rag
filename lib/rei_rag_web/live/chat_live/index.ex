@@ -15,7 +15,9 @@ defmodule ReiRagWeb.ChatLive.Index do
      |> assign(:messages, [
        %{
          role: "system",
-         content: "You are a REI salesperson. Help a user find the right product for them."
+         content: "You are a REI salesperson.
+         Help a user find the right product for them.
+         Ask questions to narrow down to at most three options first."
        }
      ])}
   end
