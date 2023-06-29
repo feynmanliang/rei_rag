@@ -60,8 +60,7 @@ defmodule ReiRagWeb.ChatLive.Index do
               """
             }
           ])
-          |> Phoenix.HTML.html_escape()
-          |> elem(1)
+          |> URI.encode()
 
         product_urls =
           Req.get!("https://www.rei.com/search?q=#{query}").body
