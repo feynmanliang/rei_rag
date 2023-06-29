@@ -130,7 +130,8 @@ defmodule ReiRagWeb.ChatLive.Index do
   end
 
   defp chat_completion(messages) do
-    Req.post!("https://api.openai.com/v1/chat/completions",
+    Req.post!(
+      System.get_env("OPENAI_API_URL"),
       headers: [Authorization: ~s'Bearer #{System.get_env("OPENAI_API_KEY")}'],
       json: %{
         model: "gpt-3.5-turbo",
